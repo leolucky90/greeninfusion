@@ -14,16 +14,23 @@
   object-fit: cover;
   border-radius: .25em;
   transition: transform 200ms;
+  transition-timing-function: ease-in-out;
   transform: scale(1.2);
   transform-origin: left;
 }
 
-.prod-img:hover {
-  transform: scale(1) ;
+.prod-img-container:hover ~ .prod-info-container {
+  transform: translateX(8em);
+}
+
+.prod-img-container:hover > .prod-img {
+  transform: scale(1.25);
 }
 
 .prod-info-container {
   border-radius: .5em;
+  transition: transform 200ms;
+  /* transition-timing-function: ease-in; */
 }
 
 .prod-info-container > p {

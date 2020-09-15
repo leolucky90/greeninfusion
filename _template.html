@@ -101,19 +101,52 @@
   </div>
 
   <!-- CART POP OVER -->
-  <div id="cartPopoverContainer" style="display: none">
-    <div>This issd vsc your div content jdfaf ans jandj asjd ajsdn jansd </div>
+  <div id="cartContentWrapper" style="display: none">
+    <div class="cart-table bg-dark">
+      <table class="table table-striped table-dark m-0">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem Ipsum Coffee</td>
+            <td>1</td>
+            <td>$12</td>
+            <td><a href="" class="text-danger">X</a></td>
+          </tr>
+          <tr>
+            <td>Lorem Ipsum Coffee</td>
+            <td>2</td>
+            <td>$30</td>
+
+            <td><a href="" class="text-danger">X</a></td>
+          </tr>
+          <tr>
+            <td>Lorem Ipsum Coffee</td>
+            <td>3</td>
+            <td>$42</td>
+
+            <td><a href="" class="text-danger">X</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="w-100 p-3 text-center">
+        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" onclick="checkout()">Check out</button>
+      </div>
+    </div>
   </div>
 
 
 
-  
 
-  
-  
-  
-  
-  
+
+
+
   <div style="height: 80vh;"></div>
 
 
@@ -186,6 +219,7 @@
 
   <!-- Custom scripts -->
   <script src="script/shared.js"></script>
+  <script src="script/content-generator.js"></script>
 </body>
 
 </html>

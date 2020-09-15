@@ -1,5 +1,4 @@
-$(document).ready(function () {
-
+$(function() {
   checkLoggedIn();
   setUpPopOver();
 
@@ -20,20 +19,27 @@ function checkLoggedIn() {
 function setUpPopOver() {
   $('#cartBtn').popover({
     html: true,
-    content: function () {
-      return $('#cartPopoverContainer').html();
-    }
+    template: `
+    <div class="popover cart-popover shadow" role="tooltip">
+      <div class="arrow"></div>
+      <h3 class="popover-header"></h3>
+      <div class="popover-body"></div>
+    </div>`,
+    content: `<div id="cartPopoverContainer"></div>`
   });
 
-  
+  $('#cartBtn').on('shown.bs.popover', function() {
+    $('#cartPopoverContainer').html(displayCart());
+  }); 
   
   $('#welcomeUserContainer').popover({
+    trigger: 'hover',
     html: true,
-    content: '<a id="logoutBtn" class="text-dark font-weight-bold">Log out</a>'
+    content: `<a id="logoutBtn" class="text-dark font-weight-bold">Log out</a>`
   });
 
   $('#welcomeUserContainer').on('shown.bs.popover', function() {
-    $("#logoutBtn").click(logout);
+    $('#logoutBtn').click(logout);
   });
 }
 
@@ -91,4 +97,74 @@ function getCookie(cname) {
 
 function removeCookie(cname) {
   document.cookie = cname + "=";
+}
+
+
+
+function displayCart() {
+  let cartListObject = localStorage.getItem('cartList');
+  let cartList = JSON.parse(cartListObject)
+
+  if (jQuery.isEmptyObject(cartList)) {
+    return "No items homie";
+  } else {
+    reloadCart();
+    return $('#cartContentWrapper').html()
+  }
+}
+
+function addToCartTable(addedProductId) {
+  // { prod1: 1, prod2: 5, prod3: 4 }
+
+  let cartListObject = localStorage.getItem('cartList');
+  let cartList = JSON.parse(cartListObject)
+
+  if (!cartList) {
+    cartList = {};
+  }
+
+  if (cartList.hasOwnProperty(addedProductId)) {
+    cartList[addedProductId]++;
+  } else {
+    cartList[addedProductId] = 1;
+  }
+
+  localStorage.setItem('cartList', JSON.stringify(cartList));
+  reloadCart();
+}
+
+function reloadCart(cartList) {
+  if (!cartList) {
+    let cartListObject = localStorage.getItem('cartList');
+    cartList = JSON.parse(cartListObject)
+  }
+
+  let rows = "";
+
+  for (const [prodId, qty] of Object.entries(cartList)) {
+    let product = coffeeProds.find( ({ id }) => id === prodId );
+
+    if (!product) {
+      continue;
+    }
+
+    rows += `
+    <tr>
+      <td>${product.name}</td>
+      <td>${qty}</td>
+      <td>$${product.price * qty}</td>
+      <td><a href="" class="text-danger">X</a></td>
+    </tr>
+    `;
+  }
+
+  $(".cart-table tbody").empty();
+  $(".cart-table tbody").html(rows);
+}
+
+
+function checkout() {
+  alert("Thank you for your purchase");
+  localStorage.removeItem('cartList');
+  $('#cartBtn').popover('hide');
 }

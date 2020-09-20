@@ -33,7 +33,6 @@ function setUpPopOver() {
   }); 
   
   $('#welcomeUserContainer').popover({
-    trigger: 'hover',
     html: true,
     content: `<a id="logoutBtn" class="text-dark font-weight-bold">Log out</a>`
   });

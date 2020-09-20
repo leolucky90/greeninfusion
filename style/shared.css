@@ -5,6 +5,10 @@ body {
   background-color: rgb(36, 36, 36);
 }
 
+.nav-bar-theme {
+  background: rgb(36, 36, 36);
+}
+
 .nav-logo {
   font-size: small;
   background-color: black;
@@ -53,14 +57,15 @@ body {
   min-width: 400px;
 }
 
-.cart-table {
+.cart-table,
+.cart-table-empty {
   /* border: white .5em solid; */
 
   border-radius: 0.5em;
   overflow: hidden;
 }
 
-.cart-popover{
+.cart-popover {
   max-width: 100%;
   width: 400px;
   border-radius: 1em;

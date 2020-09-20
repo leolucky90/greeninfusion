@@ -31,7 +31,8 @@
   padding: 1em;
 }
 
-.item-detail>.dropdown {
+.item-detail>.dropdown,
+.item-detail>.dropup {
   margin-bottom: 1em;
 }
 
@@ -39,7 +40,8 @@
   font-size: x-large;
 }
 
-.item-detail>.dropdown>button {
+.item-detail>.dropdown>button,
+.item-detail>.dropup>button {
   width: 100%;
   background-color: white;
   color: rgb(36, 36, 36);

@@ -105,7 +105,7 @@ function displayCart() {
   let cartList = JSON.parse(cartListObject)
 
   if (jQuery.isEmptyObject(cartList)) {
-    return "No items homie";
+    return $('#cartContentEmptyWrapper').html();
   } else {
     reloadCart();
     return $('#cartContentWrapper').html()
@@ -139,6 +139,7 @@ function reloadCart(cartList) {
   }
 
   let rows = "";
+  let totalPrice = 0;
 
   for (const [prodId, qty] of Object.entries(cartList)) {
     let product = coffeeProds.find( ({ id }) => id === prodId );
@@ -146,16 +147,26 @@ function reloadCart(cartList) {
     if (!product) {
       continue;
     }
-
+    let price = product.price * qty
+    totalPrice += price
     rows += `
     <tr>
       <td>${product.name}</td>
       <td>${qty}</td>
-      <td>$${product.price * qty}</td>
+      <td>$${price}</td>
       <td><a href="" class="text-danger">X</a></td>
     </tr>
     `;
   }
+
+  rows += `
+  <tr>
+    <td></td>
+    <td class="font-weight-bolder text-success">Total</td>
+    <td class="font-weight-bolder text-success">$${totalPrice}</td>
+    <td></td>
+  </tr>
+  `
 
   $(".cart-table tbody").empty();
   $(".cart-table tbody").html(rows);
@@ -163,7 +174,6 @@ function reloadCart(cartList) {
 
 
 function checkout() {
-  alert("Thank you for your purchase");
   localStorage.removeItem('cartList');
   $('#cartBtn').popover('hide');
 }

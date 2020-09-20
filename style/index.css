@@ -1,7 +1,7 @@
 .background-img {
   display: table;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('../assets/images/background3.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('../assets/images/background3.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,6 +56,7 @@
 
 .review-container {
   height: 400px;
+  background-color: rgb(36, 36, 36);
 }
 
 .review-container>img {
@@ -64,11 +65,21 @@
   object-fit: cover;
 }
 
-.review-container>p {
+.review-container>.review-content,
+.review-container>p,
+.review-container>blockquote {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80%;
+}
+
+.review-container>blockquote {
+  background-color: rgba(36, 36, 36, 0.5);
+  border-radius: .5em;
+  text-align: justify;
+  padding: .5em;
 }
 
 .article-container {

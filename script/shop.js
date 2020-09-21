@@ -12,8 +12,8 @@ function setUpProduct(container, idx) {
   container.find("img.product-thumbnail").attr("src", prod.image);
   container.find("span.product-price").html(`$${prod.price.toFixed(2)}`);
   
-  let dropdownSizes = ""
-  let dropdownGrinds = ""
+  let dropdownSizes = "";
+  let dropdownGrinds = "";
 
   let sizeOptions = prod.sizeOptions.map(function(value, index, array) {
     let displayValue = `${value}g`; // Show gram unit
@@ -26,18 +26,18 @@ function setUpProduct(container, idx) {
   });
 
   sizeOptions.forEach(function(value, index, array) {
-    dropdownSizes += `<button class="dropdown-item" onclick="selectSize($(this))">${value}</button>`
+    dropdownSizes += `<button class="dropdown-item" onclick="selectSize($(this))">${value}</button>`;
   });
 
   prod.grindOptions.forEach(function(value, index, array) {
-    dropdownGrinds += `<button class="dropdown-item" onclick="selectGrind($(this))">${value}</button>`
+    dropdownGrinds += `<button class="dropdown-item" onclick="selectGrind($(this))">${value}</button>`;
   });
 
-  container.find("button.product-selected-size").html(sizeOptions[prod.prefSize || 0])
-  container.find("div.product-sizes").append(dropdownSizes)
+  container.find("button.product-selected-size").html(sizeOptions[prod.prefSize || 0]);
+  container.find("div.product-sizes").append(dropdownSizes);
 
-  container.find("button.product-selected-grind").html(prod.grindOptions[prod.prefGrind || 0])
-  container.find("div.product-grinds").append(dropdownGrinds)
+  container.find("button.product-selected-grind").html(prod.grindOptions[prod.prefGrind || 0]);
+  container.find("div.product-grinds").append(dropdownGrinds);
 }
 
 function selectSize(element) {
@@ -48,6 +48,11 @@ function selectSize(element) {
 function selectGrind(element) {
   let value = element.html();
   element.closest("div.dropup").find("button.product-selected-grind").html(value);
+}
+
+function goToProduct(element) {
+  let prodId = element.siblings("input[type=hidden].product-id").val();
+  setCookie("selectedProdId", prodId);
 }
 
 function addToCart(btn) {

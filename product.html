@@ -101,7 +101,7 @@
     </div>
   </div>
 
- 
+
   <!-- CART POP OVER -->
   <div id="cartContentWrapper" style="display: none">
     <div class="cart-table bg-dark">
@@ -131,7 +131,9 @@
       <table class="table table-dark m-0">
         <tbody>
           <tr>
-            <td class="text-center" scope="col"><h5>Cart empty</h5></td>
+            <td class="text-center" scope="col">
+              <h5>Cart empty</h5>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -158,26 +160,23 @@
   <div class="container-fluid prod-container">
     <div class="row justify-content-center">
       <div class="col-sm-5 prod-img-container">
-        <img class="prod-img shadow-sm" src="assets/images/background.png" alt="">
+        <img id="p-image" class="prod-img shadow-sm" src="assets/images/loading.gif" alt="">
       </div>
       <div class="col-sm-3 py-3 px-3 bg-dark shadow-lg prod-info-container">
-        <h4>Coffee lorem ipsum</h4>
-        <p>Decaf coffee that’s organic, glacial water washed, and tastes like amazing coffee!</p>
-        <p>We’re turning the tides on terrible decaf coffee from lazy cafes and anti-decaf coffee marketing. With
-          high-quality beans and no added chemicals, we know there is nothing to be ashamed of when your decaf is THIS
-          delicious</p>
+        <h4 id="p-title">[Name]</h4>
+        <p id="p-description-1">...</p>
+        <p id="p-description-2">...</p>
 
-        <div class="row">
+        <div class="row mt-3">
           <div class="col-3 my-auto">Size</div>
           <div class="col">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                1kg
+              <button id="p-selected-size" class="btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ...
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Action 2</a>
+              <div id="p-sizes" class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                <!-- Size options -->
               </div>
             </div>
           </div>
@@ -186,14 +185,13 @@
         <div class="row mt-2">
           <div class="col-3 my-auto">Grind</div>
           <div class="col">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Whole beans
+            <div class="dropup">
+              <button id="p-selected-grind" class="btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ...
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Action 2</a>
+              <div id="p-grinds" class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
+                <!-- Grind options -->
               </div>
             </div>
           </div>
@@ -202,17 +200,19 @@
         <div class="row my-3">
           <div class="col-3 my-auto">Price</div>
           <div class="col">
-            <span class="prod-info-price">$25.00</span>
+            <span id="p-price" class="prod-info-price">$0.00</span>
           </div>
         </div>
 
         <div class="row my-3">
           <div class="col">
-            <button type="button" class="btn btn-outline-light prod-add-to-cart">Add to cart</button>
+            <button id="cart-btn" type="button" class="btn btn-outline-light prod-add-to-cart" onclick="addToCart()">Add to cart</button>
           </div>
           <div class="col-4">
-            <input type="number" class="form-control prod-input-quantity" value="1">
+            <input id="buy-quantity" type="number" class="form-control prod-input-quantity" value="1" min="1" max="99" maxlength="2">
           </div>
+
+          <input id="p-id" type="hidden" value="">
         </div>
 
 
@@ -285,6 +285,7 @@
   <!-- Custom scripts -->
   <script src="script/shared.js"></script>
   <script src="script/content-generator.js"></script>
+  <script src="script/product.js"></script>
 </body>
 
 </html>

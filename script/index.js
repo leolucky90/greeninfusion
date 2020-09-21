@@ -50,7 +50,10 @@ function selectGrind(element) {
   element.closest("div.dropup").find("button.product-selected-grind").html(value);
 }
 
-
+function goToProduct(element) {
+  let prodId = element.siblings("input[type=hidden].item-id").val();
+  setCookie("selectedProdId", prodId);
+}
 
 function addToCart(btn) {
   btn.addClass('btn-outline-success');

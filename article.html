@@ -15,29 +15,30 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style/shared.css">
-  <!-- <link rel="stylesheet" href="style/index.css"> -->
+  <link rel="stylesheet" href="style/article.css">
 </head>
 
 <body>
 
 
   <!-- NAV BAR -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top shadow">
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow nav-bar-theme">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <a href="#" class="navbar-brand mr-auto">
-        <img height="30px" src="assets/images/background.png" alt="logo">
+        <div class="nav-logo">GREEN INFUSIONAIT</div>
+        <!-- <img class="nav-logo" height="30px" src="assets/images/logo.png" alt="logo"> -->
       </a>
     </div>
     <div class="mx-auto order-0">
       <ul class="navbar-nav justify-content-center mx-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="shop.html">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Blog</a>
+          <a class="nav-link active" href="blog.html">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.html">About</a>
@@ -100,6 +101,7 @@
     </div>
   </div>
 
+
   <!-- CART POP OVER -->
   <div id="cartContentWrapper" style="display: none">
     <div class="cart-table bg-dark">
@@ -108,36 +110,45 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
+            <th scope="col">Price</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Lorem Ipsum Coffee</td>
-            <td>1</td>
-            <td>$12</td>
-            <td><a href="" class="text-danger">X</a></td>
-          </tr>
-          <tr>
-            <td>Lorem Ipsum Coffee</td>
-            <td>2</td>
-            <td>$30</td>
-
-            <td><a href="" class="text-danger">X</a></td>
-          </tr>
-          <tr>
-            <td>Lorem Ipsum Coffee</td>
-            <td>3</td>
-            <td>$42</td>
-
-            <td><a href="" class="text-danger">X</a></td>
-          </tr>
+          <!-- ADDED ITEMS HERE -->
         </tbody>
       </table>
       <div class="w-100 p-3 text-center">
-        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" onclick="checkout()">Check
-          out</button>
+        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" data-toggle="modal"
+          data-target="#checkoutModal" onclick="checkout()">Check out
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cartContentEmptyWrapper" style="display: none">
+    <div class="cart-table-empty bg-dark">
+      <table class="table table-dark m-0">
+        <tbody>
+          <tr>
+            <td class="text-center" scope="col">
+              <h5>Cart empty</h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-dark">
+        <div class="modal-body text-center">
+          <h3>Thank you for your purchase</h3>
+          <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
@@ -148,20 +159,26 @@
 
 
 
-  <div style="height: 80vh;">
 
 
-
+  <div class="px-5 my-5">
+    <div class="container-fluid mt-5">
+      <div class="row justify-content-center article-container">
+        <div class="col-sm-8 text-capitalize text-center">
+          <h3 id="a-title">[Article title]</h3>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3 article-container">
+        <div id="a-body-container" class="col-sm-8 text-justify">
+          [Article body]
+        </div>
+      </div>
+    </div>
   </div>
 
 
 
 
-
-
-  <!-- 
-    <img src="assets/images/blog/zzz">
- -->
 
 
 
@@ -174,18 +191,18 @@
       <div class="row justify-content-between">
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="text-justify">We offers Australia best value online shopping experience for your fresh roasted
+            premium coffee beans. It is also our mission to source the best green beans, make it possible
+            for consumers to buy coffee online at super-competitive prices.</p>
         </div>
 
         <div class="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
           <ul class="footer-links">
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -227,6 +244,7 @@
   <!-- Custom scripts -->
   <script src="script/shared.js"></script>
   <script src="script/content-generator.js"></script>
+  <script src="script/article.js"></script>
 </body>
 
 </html>

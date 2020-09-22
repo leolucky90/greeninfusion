@@ -168,38 +168,35 @@
       <div class="row justify-content-center mt-5 feature-article-container">
         <div class="col-sm-5">
           <div class="h-100 p-3 rounded shadow">
-            <h3>Featured article breaking news !!!</h3>
+            <h3 class="featured-article-title">Featured article breaking news !!!</h3>
             <hr class="mb-4 bg-light">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            <p class="featured-article-sumary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
               ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
               ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             <div class="text-right">
-              <button type="button" class="btn btn-outline-light text-center">Read more</button>
+              <input type="hidden" class="article-id" value="">
+              <button type="button" class="btn btn-outline-light text-center" onclick="goToArticle($(this))">Read more</button>
             </div>
           </div>
         </div>
         <div class="col-sm-5">
-          <img class="shadow rounded" src="assets/images/background.png" alt="product1">
+          <img class="shadow rounded featured-article-thumbnail" src="assets/images/loading.gif" alt="product1">
         </div>
       </div>
 
       <div class="row justify-content-center mt-5">
         <div class="col-sm-5">
           <div class="article-container shadow">
-            <img src="assets/images/background.png" alt="product1">
+            <img class="article-thumbnail" src="assets/images/loading.gif" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article A</h4>
+              <h4 class="article-title">Test Article A</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
               </div>
 
             </div>
@@ -208,17 +205,16 @@
 
         <div class="col-sm-5">
           <div class="article-container shadow">
-            <img src="assets/images/background.png" alt="product1">
+            <img class="article-thumbnail" src="assets/images/loading.gif" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article B</h4>
+              <h4 class="article-title">Testr Article B</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
               </div>
             </div>
           </div>
@@ -227,17 +223,16 @@
       <div class="row justify-content-center mt-5">
         <div class="col-sm-5">
           <div class="article-container shadow">
-            <img src="assets/images/background.png" alt="product1">
+            <img class="article-thumbnail" src="assets/images/loading.gif" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article A</h4>
+              <h4 class="article-title">Testr Article A</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
               </div>
 
             </div>
@@ -246,17 +241,16 @@
 
         <div class="col-sm-5">
           <div class="article-container shadow">
-            <img src="assets/images/background.png" alt="product1">
+            <img class="article-thumbnail" src="assets/images/loading.gif" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article B</h4>
+              <h4 class="article-title">Testr Article B</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
               </div>
             </div>
           </div>
@@ -336,6 +330,7 @@
   <!-- Custom scripts -->
   <script src="script/shared.js"></script>
   <script src="script/content-generator.js"></script>
+  <script src="script/blog.js"></script>
 </body>
 
 </html>

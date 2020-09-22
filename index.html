@@ -393,17 +393,16 @@
       <div class="row justify-content-around">
         <div class="col-sm-5">
           <div class="article-container shadow">
-            <img class="article-image" src="assets/images/blog/blog1.jpg" alt="product1">
+            <img class="article-thumbnail" src="assets/images/blog/blog1.jpg" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article A</h4>
+              <h4 class="article-title">[Article title]</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
               </div>
 
             </div>
@@ -412,17 +411,16 @@
 
         <div class="col-sm-5">
           <div class="article-container shadow">
-            <img class="article-image" src="assets/images/blog/blog2.jpg" alt="product1">
+            <img class="article-thumbnail" src="assets/images/blog/blog2.jpg" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article B</h4>
+              <h4 class="article-title">[Article title]</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
               </div>
             </div>
           </div>

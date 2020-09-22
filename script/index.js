@@ -2,6 +2,10 @@ $(function() {
   $(".item-container").each(function(i, el ) {
     setUpProduct($(this), i);
   });
+
+  $(".article-container").each(function (i, el) {
+    setUpArticles($(this), i);
+  });
 });
 
 function setUpProduct(container, idx) {
@@ -53,6 +57,22 @@ function selectGrind(element) {
 function goToProduct(element) {
   let prodId = element.siblings("input[type=hidden].item-id").val();
   setCookie("selectedProdId", prodId);
+}
+
+function setUpArticles(container, idx) {
+  // let article = blogArticles.filter(a => !a.isFeatured)[idx];
+  let article = blogArticles[idx];
+
+  container.find("input[type=hidden].article-id").val(article.id);
+  container.find("img.article-thumbnail").attr("src", article.thumbnail);
+  container.find("h4.article-title").html(article.title);
+  container.find("p.article-sumary").html(article.sumary);
+}
+
+function goToArticle(element) {
+  let artId = element.siblings("input[type=hidden].article-id").val();
+  setCookie("selectedArticleId", artId);
+  window.location.href = 'article.html';
 }
 
 function addToCart(btn) {

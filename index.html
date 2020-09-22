@@ -23,14 +23,17 @@
 
   <!-- NAV BAR -->
   <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow nav-bar-theme">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <div class="w-100 order-0 order-md-0">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a href="#" class="navbar-brand mr-auto">
         <div class="nav-logo">GREEN INFUSIONAIT</div>
         <!-- <img class="nav-logo" height="30px" src="assets/images/logo.png" alt="logo"> -->
       </a>
     </div>
-    <div class="mx-auto order-0">
-      <ul class="navbar-nav justify-content-center mx-auto">
+    <div class="navbar-collapse collapse dual-collapse2 mx-auto order-1 order-md-1">
+      <ul class="navbar-nav justify-content-md-center mx-md-auto">
         <li class="nav-item">
           <a class="nav-link active" href="index.html">Home</a>
         </li>
@@ -48,9 +51,9 @@
         </li>
       </ul>
     </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse w-100 order-2 order-md-2 dual-collapse2">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2">
+        <li class="nav-item mr-2 mb-2 mb-md-0">
           <button type="button" id="loginBtn" class="btn btn-outline-light nav-button" data-toggle="modal"
             data-target="#loginModal">Login</button>
           <div id="welcomeUserContainer" class="h-100 px-2 d-none" data-placement="bottom">
@@ -195,7 +198,7 @@
     <div class="container-fluid">
       <div class="row justify-content-around">
         <div class="col-sm-3">
-          <div class="item-container shadow">
+          <div class="item-container shadow mb-5 mb-md-0">
             <input type="hidden" class="item-id" value="">
             <a href="product.html" onclick="goToProduct($(this))">
               <img class="item-image" src="assets/images/loading.gif" alt="product1">
@@ -239,7 +242,7 @@
         </div>
 
         <div class="col-sm-3">
-          <div class="item-container shadow">
+          <div class="item-container shadow mb-5 mb-md-0">
             <input type="hidden" class="item-id" value="">
             <a href="product.html" onclick="goToProduct($(this))">
               <img class="item-image" src="assets/images/loading.gif" alt="product1">
@@ -282,7 +285,7 @@
           </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-3 mb-5 mb-md-0">
           <div class="item-container shadow">
             <input type="hidden" class="item-id" value="">
             <a href="product.html" onclick="goToProduct($(this))">
@@ -392,7 +395,7 @@
     <div class="container-fluid">
       <div class="row justify-content-around">
         <div class="col-sm-5">
-          <div class="article-container shadow">
+          <div class="article-container shadow mb-5 mb-md-0">
             <img class="article-thumbnail" src="assets/images/blog/blog1.jpg" alt="product1">
 
             <div class="article-detail">
@@ -402,7 +405,8 @@
 
               <div class="text-right">
                 <input type="hidden" class="article-id" value="">
-                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read
+                  more</button>
               </div>
 
             </div>
@@ -420,7 +424,8 @@
 
               <div class="text-right">
                 <input type="hidden" class="article-id" value="">
-                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read more</button>
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read
+                  more</button>
               </div>
             </div>
           </div>

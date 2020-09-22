@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 body {
   font-family: 'Josefin Sans', Helvetica, sans-serif;
   color: white;
@@ -254,5 +255,9 @@ body {
     display: block;
     margin-right: 0;
     font-weight: 600
+  }
+
+  .nav-item>.nav-link {
+    text-align: left;
   }
 }

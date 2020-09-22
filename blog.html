@@ -23,22 +23,25 @@
 
   <!-- NAV BAR -->
   <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow nav-bar-theme">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <div class="w-100 order-0 order-md-0">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a href="#" class="navbar-brand mr-auto">
         <div class="nav-logo">GREEN INFUSIONAIT</div>
         <!-- <img class="nav-logo" height="30px" src="assets/images/logo.png" alt="logo"> -->
       </a>
     </div>
-    <div class="mx-auto order-0">
-      <ul class="navbar-nav justify-content-center mx-auto">
+    <div class="navbar-collapse collapse dual-collapse2 mx-auto order-1 order-md-1">
+      <ul class="navbar-nav justify-content-md-center mx-md-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link active" href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="shop.html">Shop</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="blog.html">Blog</a>
+          <a class="nav-link" href="blog.html">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.html">About</a>
@@ -48,9 +51,9 @@
         </li>
       </ul>
     </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse w-100 order-2 order-md-2 dual-collapse2">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2">
+        <li class="nav-item mr-2 mb-2 mb-md-0">
           <button type="button" id="loginBtn" class="btn btn-outline-light nav-button" data-toggle="modal"
             data-target="#loginModal">Login</button>
           <div id="welcomeUserContainer" class="h-100 px-2 d-none" data-placement="bottom">

@@ -2,6 +2,10 @@
   height: 70vh;
 }
 
+.carousel-item>img {
+  width: 100%;
+}
+
 .background-img {
   display: table;
   width: 100%;
@@ -56,4 +60,11 @@
   width: 100%;
   border-width: 2px;
   /* background-color: rgb(36, 36, 36); */
+}
+
+@media (max-width:767px) {
+  .carousel-item>img {
+    height: 100%;
+    width: auto;
+  }
 }

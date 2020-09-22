@@ -2,6 +2,10 @@
   height: 70vh;
 }
 
+.carousel-item>img {
+  width: 100%;
+}
+
 .background-img {
   display: table;
   width: 100%;
@@ -35,11 +39,13 @@
   padding: 1em;
 }
 
-.item-detail>.dropdown {
+.item-detail>.dropdown, 
+.item-detail>.dropup {
   margin-bottom: 1em;
 }
 
-.item-detail>.dropdown>button {
+.item-detail>.dropdown>button,
+.item-detail>.dropup>button {
   width: 100%;
   background-color: white;
   color: rgb(36, 36, 36);
@@ -54,4 +60,11 @@
   width: 100%;
   border-width: 2px;
   /* background-color: rgb(36, 36, 36); */
+}
+
+@media (max-width:767px) {
+  .carousel-item>img {
+    height: 100%;
+    width: auto;
+  }
 }

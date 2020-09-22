@@ -22,15 +22,18 @@
 
 
   <!-- NAV BAR -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top shadow">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow nav-bar-theme">
+    <div class="w-100 order-0 order-md-0">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a href="#" class="navbar-brand mr-auto">
         <div class="nav-logo">GREEN INFUSIONAIT</div>
         <!-- <img class="nav-logo" height="30px" src="assets/images/logo.png" alt="logo"> -->
       </a>
     </div>
-    <div class="mx-auto order-0">
-      <ul class="navbar-nav justify-content-center mx-auto">
+    <div class="navbar-collapse collapse dual-collapse2 mx-auto order-1 order-md-1">
+      <ul class="navbar-nav justify-content-md-center mx-md-auto">
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
@@ -48,9 +51,9 @@
         </li>
       </ul>
     </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse w-100 order-2 order-md-2 dual-collapse2">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2">
+        <li class="nav-item mr-2 mb-2 mb-md-0">
           <button type="button" id="loginBtn" class="btn btn-outline-light nav-button" data-toggle="modal"
             data-target="#loginModal">Login</button>
           <div id="welcomeUserContainer" class="h-100 px-2 d-none" data-placement="bottom">
@@ -101,7 +104,7 @@
     </div>
   </div>
 
- 
+
   <!-- CART POP OVER -->
   <div id="cartContentWrapper" style="display: none">
     <div class="cart-table bg-dark">
@@ -110,7 +113,7 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
+            <th scope="col">Price</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -119,8 +122,36 @@
         </tbody>
       </table>
       <div class="w-100 p-3 text-center">
-        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" onclick="checkout()">Check
-          out</button>
+        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" data-toggle="modal"
+          data-target="#checkoutModal" onclick="checkout()">Check out
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cartContentEmptyWrapper" style="display: none">
+    <div class="cart-table-empty bg-dark">
+      <table class="table table-dark m-0">
+        <tbody>
+          <tr>
+            <td class="text-center" scope="col">
+              <h5>Cart empty</h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-dark">
+        <div class="modal-body text-center">
+          <h3>Thank you for your purchase</h3>
+          <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
@@ -131,10 +162,13 @@
   <div id="home-carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="assets/images/background4.jpg" alt="First slide">
-        <div class="carousel-caption-container">
-          <h2>TEST CAPTION MATE</h2>
-          <p>Test Subcaption Mate</p>
+        <img class="d-block" src="assets/images/background4.jpg" alt="First slide">
+        <div class="carousel-caption-container p-3">
+          <h2>BUY COFFEE ONLINE</h2>
+          <span class="mt-3">
+            Buying Coffee online has never been easier. Simply choose the coffee of your choice through the website,
+            we’ll pack and ship it the same day, and you should have it in a day or two.
+          </span>
         </div>
       </div>
     </div>
@@ -149,16 +183,6 @@
     <div class="container-fluid">
       <div class="row justify-content-between mb-3 px-3">
         <h3>All Products</h3>
-
-        <!-- <div class="dropdown sort-product">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <a class="dropdown-item" href="#">Action</a>
-          </div>
-        </div>  -->
       </div>
 
       <!-- Product row 1 -->
@@ -166,31 +190,31 @@
       <div class="row justify-content-around">
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 1</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 1</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -209,31 +233,31 @@
 
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 2</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 2</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -252,31 +276,31 @@
 
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 3</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 3</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -295,31 +319,31 @@
 
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 3</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 3</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -343,31 +367,31 @@
       <div class="row justify-content-around mt-5">
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 1</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 1</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -386,31 +410,31 @@
 
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 2</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 2</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -429,31 +453,31 @@
 
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 3</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 3</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -472,31 +496,31 @@
 
         <div class="col-sm-3">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="product-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="product-thumbnail" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center product-title">Test Product 3</h4>
+              <h4 class="text-center product-title text-capitalize">Test Product 3</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -526,18 +550,18 @@
       <div class="row justify-content-between">
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="text-justify">We offers Australia best value online shopping experience for your fresh roasted
+            premium coffee beans. It is also our mission to source the best green beans, make it possible
+            for consumers to buy coffee online at super-competitive prices.</p>
         </div>
 
         <div class="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
           <ul class="footer-links">
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
       </div>

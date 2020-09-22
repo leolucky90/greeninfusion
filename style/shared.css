@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 body {
   font-family: 'Josefin Sans', Helvetica, sans-serif;
   color: white;
+  background-color: rgb(36, 36, 36);
+}
+
+.nav-bar-theme {
   background-color: rgb(36, 36, 36);
 }
 
@@ -53,14 +58,15 @@ body {
   min-width: 400px;
 }
 
-.cart-table {
+.cart-table,
+.cart-table-empty {
   /* border: white .5em solid; */
 
   border-radius: 0.5em;
   overflow: hidden;
 }
 
-.cart-popover{
+.cart-popover {
   max-width: 100%;
   width: 400px;
   border-radius: 1em;
@@ -69,10 +75,6 @@ body {
 .cart-popover .popover-body {
   margin: 0;
   padding: 0;
-}
-
-.btn-checkout {
-  /* width: 120px; */
 }
 
 /* CAROUSEL */
@@ -86,6 +88,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: rgba(36, 36, 36, 0.5);
+  border-radius: .5em;
 }
 
 /* FOOTER */
@@ -247,5 +251,9 @@ body {
     display: block;
     margin-right: 0;
     font-weight: 600
+  }
+
+  .nav-item>.nav-link {
+    text-align: left;
   }
 }

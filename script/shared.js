@@ -33,7 +33,6 @@ function setUpPopOver() {
   }); 
   
   $('#welcomeUserContainer').popover({
-    trigger: 'hover',
     html: true,
     content: `<a id="logoutBtn" class="text-dark font-weight-bold">Log out</a>`
   });
@@ -106,14 +105,14 @@ function displayCart() {
   let cartList = JSON.parse(cartListObject)
 
   if (jQuery.isEmptyObject(cartList)) {
-    return "No items homie";
+    return $('#cartContentEmptyWrapper').html();
   } else {
     reloadCart();
     return $('#cartContentWrapper').html()
   }
 }
 
-function addToCartTable(addedProductId) {
+function addToCartTable(addedProductId, quantity) {
   // { prod1: 1, prod2: 5, prod3: 4 }
 
   let cartListObject = localStorage.getItem('cartList');
@@ -123,10 +122,13 @@ function addToCartTable(addedProductId) {
     cartList = {};
   }
 
+  let quantityNum = parseInt(quantity);
+  
   if (cartList.hasOwnProperty(addedProductId)) {
-    cartList[addedProductId]++;
+    let currentQty = parseInt(cartList[addedProductId]) 
+    cartList[addedProductId] = currentQty + (quantityNum || 1);
   } else {
-    cartList[addedProductId] = 1;
+    cartList[addedProductId] = quantityNum || 1;
   }
 
   localStorage.setItem('cartList', JSON.stringify(cartList));
@@ -140,6 +142,7 @@ function reloadCart(cartList) {
   }
 
   let rows = "";
+  let totalPrice = 0;
 
   for (const [prodId, qty] of Object.entries(cartList)) {
     let product = coffeeProds.find( ({ id }) => id === prodId );
@@ -147,24 +150,45 @@ function reloadCart(cartList) {
     if (!product) {
       continue;
     }
-
+    let price = product.price * qty
+    totalPrice += price
     rows += `
     <tr>
       <td>${product.name}</td>
       <td>${qty}</td>
-      <td>$${product.price * qty}</td>
-      <td><a href="" class="text-danger">X</a></td>
+      <td>$${price}</td>
+      <td><a href="#" class="text-danger" onclick="return removeFromCart('${prodId}')">X</a></td>
     </tr>
     `;
   }
+
+  rows += `
+  <tr>
+    <td></td>
+    <td class="font-weight-bolder text-success">Total</td>
+    <td class="font-weight-bolder text-success">$${totalPrice}</td>
+    <td></td>
+  </tr>
+  `
 
   $(".cart-table tbody").empty();
   $(".cart-table tbody").html(rows);
 }
 
+function removeFromCart(prodId) {
+  let cartListObject = localStorage.getItem('cartList');
+  let cartList = JSON.parse(cartListObject)
+
+  if (!cartList || !cartList.hasOwnProperty(prodId)) { return false; }
+
+  delete cartList[prodId];  
+  localStorage.setItem('cartList', JSON.stringify(cartList));
+  reloadCart();
+
+  return false;
+}
 
 function checkout() {
-  alert("Thank you for your purchase");
   localStorage.removeItem('cartList');
   $('#cartBtn').popover('hide');
 }

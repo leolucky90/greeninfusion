@@ -22,15 +22,18 @@
 
 
   <!-- NAV BAR -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top shadow">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top shadow nav-bar-theme">
+    <div class="w-100 order-0 order-md-0">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a href="#" class="navbar-brand mr-auto">
         <div class="nav-logo">GREEN INFUSIONAIT</div>
         <!-- <img class="nav-logo" height="30px" src="assets/images/logo.png" alt="logo"> -->
       </a>
     </div>
-    <div class="mx-auto order-0">
-      <ul class="navbar-nav justify-content-center mx-auto">
+    <div class="navbar-collapse collapse dual-collapse2 mx-auto order-1 order-md-1">
+      <ul class="navbar-nav justify-content-md-center mx-md-auto">
         <li class="nav-item">
           <a class="nav-link active" href="index.html">Home</a>
         </li>
@@ -48,9 +51,9 @@
         </li>
       </ul>
     </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse w-100 order-2 order-md-2 dual-collapse2">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2">
+        <li class="nav-item mr-2 mb-2 mb-md-0">
           <button type="button" id="loginBtn" class="btn btn-outline-light nav-button" data-toggle="modal"
             data-target="#loginModal">Login</button>
           <div id="welcomeUserContainer" class="h-100 px-2 d-none" data-placement="bottom">
@@ -101,7 +104,7 @@
     </div>
   </div>
 
- 
+
   <!-- CART POP OVER -->
   <div id="cartContentWrapper" style="display: none">
     <div class="cart-table bg-dark">
@@ -110,7 +113,7 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Total</th>
+            <th scope="col">Price</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -119,8 +122,36 @@
         </tbody>
       </table>
       <div class="w-100 p-3 text-center">
-        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" onclick="checkout()">Check
-          out</button>
+        <button type="button" class="btn btn-outline-light nav-button w-100 btn-checkout" data-toggle="modal"
+          data-target="#checkoutModal" onclick="checkout()">Check out
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cartContentEmptyWrapper" style="display: none">
+    <div class="cart-table-empty bg-dark">
+      <table class="table table-dark m-0">
+        <tbody>
+          <tr>
+            <td class="text-center" scope="col">
+              <h5>Cart empty</h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-dark">
+        <div class="modal-body text-center">
+          <h3>Thank you for your purchase</h3>
+          <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
@@ -132,9 +163,11 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img class="d-block w-100" src="assets/images/carousel.jpg" alt="First slide">
-        <div class="carousel-caption-container">
-          <h2>TEST CAPTION MATE</h2>
-          <p>Test Subcaption Mate</p>
+        <div class="carousel-caption-container p-3">
+          <h2>WORLDWIDE SOURCED COFFEE. ARTISAN ROASTED IN AUSTRALIA. DELIVERED IN FRESH.</h2>
+          <span class="mt-2">
+            OURS MISSION TO DELIVER GREAT ARTISAN ROASTED COFFEE TO EVERYONE IN AUSTRALIA
+          </span>
         </div>
       </div>
     </div>
@@ -165,8 +198,9 @@
     <div class="container-fluid">
       <div class="row justify-content-around">
         <div class="col-sm-3">
-          <div class="item-container shadow">
-            <a href="product.html">
+          <div class="item-container shadow mb-5 mb-md-0">
+            <input type="hidden" class="item-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="item-image" src="assets/images/loading.gif" alt="product1">
             </a>
 
@@ -174,23 +208,22 @@
               <h4 class="text-center item-title">Test Product 1</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -199,7 +232,8 @@
                   <span class="my-auto item-price">$0</span>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-dark btn-lg btn-add-to-cart" onclick="addToCart($(this))">Add to cart</button>
+                  <button type="button" class="btn btn-dark btn-lg btn-add-to-cart" onclick="addToCart($(this))">Add to
+                    cart</button>
                   <input type="hidden" class="item-id" value="">
                 </div>
               </div>
@@ -208,32 +242,32 @@
         </div>
 
         <div class="col-sm-3">
-          <div class="item-container shadow">
-            <a href="product.html">
+          <div class="item-container shadow mb-5 mb-md-0">
+            <input type="hidden" class="item-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="item-image" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center">Test Product 2</h4>
+              <h4 class="text-center item-title">Test Product 2</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -242,7 +276,8 @@
                   <span class="my-auto item-price">$0</span>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-dark btn-lg btn-add-to-cart" onclick="addToCart($(this))">Add to cart</button>
+                  <button type="button" class="btn btn-dark btn-lg btn-add-to-cart" onclick="addToCart($(this))">Add to
+                    cart</button>
                   <input type="hidden" class="item-id" value="">
                 </div>
               </div>
@@ -250,33 +285,33 @@
           </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-3 mb-5 mb-md-0">
           <div class="item-container shadow">
-            <a href="product.html">
+            <input type="hidden" class="item-id" value="">
+            <a href="product.html" onclick="goToProduct($(this))">
               <img class="item-image" src="assets/images/loading.gif" alt="product1">
             </a>
 
             <div class="item-detail">
-              <h4 class="text-center">Test Product 3</h4>
+              <h4 class="text-center item-title">Test Product 3</h4>
 
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                <button class="btn btn-secondary dropdown-toggle product-selected-size" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
+                <div class="dropdown-menu product-sizes">
+                  <!-- Size options -->
                 </div>
               </div>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+              <div class="dropup">
+                <button class="btn btn-secondary dropdown-toggle product-selected-grind" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown button
+                  ...
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Action 2</a>
+                <div class="dropdown-menu product-grinds">
+                  <!-- Grind options -->
                 </div>
               </div>
 
@@ -285,7 +320,8 @@
                   <span class="my-auto item-price">$0</span>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-dark btn-lg btn-add-to-cart" onclick="addToCart($(this))">Add to cart</button>
+                  <button type="button" class="btn btn-dark btn-lg btn-add-to-cart" onclick="addToCart($(this))">Add to
+                    cart</button>
                   <input type="hidden" class="item-id" value="">
                 </div>
               </div>
@@ -304,40 +340,49 @@
 
         <div class="carousel slide h-100" data-ride="carousel">
           <div class="carousel-inner h-100">
-            <div class="carousel-item active h-100 px-5 bg-info">
-              <div class="d-table h-100 px-5">
-                <p class="d-table-cell align-middle text-center">Lorem ipsum dolor si amet Lorem ipsum dolor si amet
-                  Lorem ipsum dolor si amet</p>
-              </div>
+            <div class="carousel-item active h-100 review-container">
+              <img src="assets/images/background5.jpg" alt="">
+              <blockquote class="blockquote text-right">
+                <p class="mb-0">"Soooo good!! So far we've tried the Caramello and it is brilliant and now we will open
+                  the next tomorrow - can't wait"</p>
+                <footer class="blockquote-footer text-light">John Keep</footer>
+              </blockquote>
             </div>
 
-            <div class="carousel-item h-100 px-5 bg-danger">
-              <div class="d-table h-100 px-5">
-                <p class="d-table-cell align-middle text-center">Lorem ipsum dolor si amet Lorem ipsum dolor si amet
-                  Lorem ipsum dolor si amet</p>
-              </div>
+            <div class="carousel-item h-100 review-container">
+              <img src="assets/images/background6.jpg" alt="">
+              <blockquote class="blockquote text-right">
+                <p class="mb-0">"My favourite coffee blend. I’ve been having it for years. Leaves a great after taste
+                  that lingers for hours after your had your last mouthful."</p>
+                <footer class="blockquote-footer text-light">Karen <cite title="Source Title">ABC News</cite></footer>
+              </blockquote>
             </div>
 
           </div>
         </div>
 
-        <!-- <img src="assets/images/background.png" alt="">
-        <p>Lorem ipsum dolor si amet Lorem ipsum dolor si amet Lorem ipsum dolor si amet</p> -->
-
       </div>
-      <div class="col-sm p-0 review-container bg-dark">
-        <!-- <img src="assets/images/background.png" alt=""> -->
-        <p>Lorem ipsum dolor si amet Lorem ipsum dolor si amet Lorem ipsum dolor si amet</p>
+      <div class="col-sm p-0 review-container bg-dark text-center">
+        <div class="review-content">
+          <p>Browse and buy your favourite coffee beans, capsules, instant and drip bags from Australia's finest
+            roasters</p>
+          <a href="shop.html"><button type="button" class="btn btn-light mt-2">Shop now</button></a>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm p-0 review-container bg-dark">
-        <!-- <img src="assets/images/background.png" alt=""> -->
-        <p>Lorem ipsum dolor si amet Lorem ipsum dolor si amet Lorem ipsum dolor si amet</p>
+      <div class="col-sm p-0 review-container text-center">
+        <div class="review-content">
+          <h6>MEET</h6>
+          <h4 class="my-2">Jeff Bo Han</h4>
+          <span>Talented barista from Dukes Coffee Roasters. From brewing delicious pots of coffee to knowing which
+            desserts to pair alongside. Tingling your taste
+            buds like an exotic blend with the best barista in town.</span>
+        </div>
       </div>
       <div class="col-sm p-0 bg-dark review-container">
-        <img src="assets/images/background6.jpg" alt="">
-        <p>Lorem ipsum dolor si amet Lorem ipsum dolor si amet Lorem ipsum dolor si amet</p>
+        <img src="assets/images/background7.jpg" alt="">
+        <!-- <p>Lorem ipsum dolor si amet Lorem ipsum dolor si amet Lorem ipsum dolor si amet</p> -->
       </div>
     </div>
   </div>
@@ -350,18 +395,18 @@
     <div class="container-fluid">
       <div class="row justify-content-around">
         <div class="col-sm-5">
-          <div class="article-container shadow">
-              <img class="article-image" src="assets/images/blog/blog1.jpg" alt="product1">
+          <div class="article-container shadow mb-5 mb-md-0">
+            <img class="article-thumbnail" src="assets/images/blog/blog1.jpg" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article A</h4>
+              <h4 class="article-title">[Article title]</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read
+                  more</button>
               </div>
 
             </div>
@@ -370,17 +415,17 @@
 
         <div class="col-sm-5">
           <div class="article-container shadow">
-              <img class="article-image" src="assets/images/blog/blog2.jpg" alt="product1">
+            <img class="article-thumbnail" src="assets/images/blog/blog2.jpg" alt="product1">
 
             <div class="article-detail">
-              <h4>Test Article B</h4>
+              <h4 class="article-title">[Article title]</h4>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="article-sumary">[Article sumary]</p>
 
               <div class="text-right">
-                <button type="button" class="btn btn-outline-dark text-center">Read more</button>
+                <input type="hidden" class="article-id" value="">
+                <button type="button" class="btn btn-outline-dark text-center" onclick="goToArticle($(this))">Read
+                  more</button>
               </div>
             </div>
           </div>
@@ -409,18 +454,18 @@
       <div class="row justify-content-between">
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="text-justify">We offers Australia best value online shopping experience for your fresh roasted
+            premium coffee beans. It is also our mission to source the best green beans, make it possible
+            for consumers to buy coffee online at super-competitive prices.</p>
         </div>
 
         <div class="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
           <ul class="footer-links">
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
       </div>

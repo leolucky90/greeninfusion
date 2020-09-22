@@ -38,7 +38,8 @@
   text-align: justify;
 }
 
-.prod-info-container .dropdown > button {
+.prod-info-container .dropdown > button,
+.prod-info-container .dropup > button {
   width: 100%;
 }
 
